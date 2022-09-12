@@ -14,15 +14,14 @@ class Movie {
   constructor(title, director, budget) {
     this.title = title;
     this.director = director;
-    this.bugdet = budget;
-    this.exp = function () {
-      if (this.budget < 100000000) {
-        return false;
-      } else {
-        return true;
-      }
-    };
+    this.budget = budget;
+  }
+
+  wasExpensive() {
+    return this.budget > 900000;
   }
 }
-const wasExpensive = new Movie("Spider-Man", "Sam Raimi", 139000000);
-console.log(wasExpensive.exp());
+
+const spiderMan = new Movie("Spider Man", "Some dude", 50000);
+
+console.log(spiderMan.wasExpensive());

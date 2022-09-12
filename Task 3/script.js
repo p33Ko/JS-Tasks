@@ -18,6 +18,8 @@ document.getElementById("btn").addEventListener("click", () => {
     .then((response) => response.json())
 
     .then((data) => {
+      const results = document.getElementById("output");
+      results.innerHTML = "";
       data.forEach((users) => {
         /* Elements */
         const container = document.createElement("div");

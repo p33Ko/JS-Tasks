@@ -5,19 +5,22 @@ subtraction(a, b) - priima du skaičius ir grąžina jų skirtumą.
 multiplication(a, b) - priima du skaičius ir grąžina jų daugybos rezultatą;
 division(a, b) - priima du skaičius ir grąžina jų dalybos rezultatą;
 ------------------------------------------------------------------------------------ */
-const numb = new calc(3, 1);
-function calc(a, b) {
-  this.sum = a + b;
-  this.sub = a - b;
-  this.multi = a * b;
-  this.div = a / b;
-  this.print = function () {
-    console.log(
-      ` ${this.sum}
-            ${this.sub}
-            ${this.multi}
-            ${this.div}`
-    );
-  };
+function Calculator() {
+  this.result = 0;
+
+  this.sum = (a, b) => (this.result = a + b);
+  this.division = (a, b) => a / b;
+  this.clear = () => (this.result = 0);
 }
-numb.print();
+
+const count = new Calculator();
+
+count.sum(5, 4);
+
+console.log(count.result);
+
+count.clear();
+
+count.sum(100, 2);
+
+console.log(count.result);

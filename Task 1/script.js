@@ -14,8 +14,37 @@ const oz = 35.274;
 
 document.getElementById("changer").addEventListener("submit", function (event) {
   event.preventDefault();
-  let kg = Number(this.querySelector("input[type=text]").value);
-  document.getElementById("svarai").innerHTML = "Pounds =" + kg * lb + "lb";
-  document.getElementById("gramai").innerHTML = "Grams =" + kg / g + "g";
-  document.getElementById("uncijos").innerHTML = "Ounce =" + kg * oz + "oz";
+
+  const inputValue = event.target[0].value;
+  const kg = Number(inputValue);
+
+  function convert(elementId, unitTitle, unit) {
+    const formula = {
+      lb: kg * lb,
+      g: kg / g,
+      oz: kg * oz,
+    };
+
+    document.getElementById(
+      elementId
+    ).textContent = `${unitTitle} = ${formula[unit]} ${unit}`;
+  }
+
+  convert({
+    elementId: "svarai",
+    unitTitle: "Pounds",
+    unit: "lb",
+  });
+
+  convert({
+    elementId: "gramai",
+    unitTitle: "Grams",
+    unit: "g",
+  });
+
+  convert({
+    elementId: "uncijos",
+    unitTitle: "Ounce",
+    unit: "oz",
+  });
 });
